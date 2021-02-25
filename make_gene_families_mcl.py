@@ -137,18 +137,14 @@ def clean():
     for fasta_file in glob.glob("*.fa"):
         total_gene_families += 1
 
-    pct_progress_been = set()
     progress = 0
     for fasta_file in glob.glob("*.fa"):
         progress += 1
         command = "mv " + fasta_file + " MCL_gene_families"
         os.system(command)
         pct_progress = int(round((progress/total_gene_families)*100,1))
-        if pct_progress not in pct_progress_been:
-            line = ((int(pct_progress/2)) * ("*")) + " %" + str(pct_progress)
-            print(line)
-        pct_progress_been.add(pct_progress)
-
+        print(pct_progress)
+      
     print("\nAll gene familes have been moved ")
 
     os.mkdir("input_files")
