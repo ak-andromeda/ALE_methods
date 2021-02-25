@@ -142,8 +142,8 @@ def clean():
         progress += 1
         command = "mv " + fasta_file + " MCL_gene_families"
         os.system(command)
-        pct_progress = int(round((progress/total_gene_families)*100,1))
-        print(pct_progress)
+        pct_progress = int(round((progress/total_gene_families)*100,2))
+        print("%",pct_progress)
       
     print("\nAll gene familes have been moved ")
 
