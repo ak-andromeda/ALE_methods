@@ -8,8 +8,6 @@ def plot_subplot(df,paper_pal):
     """ Function to plot subplot """
 
     sns.set_style("whitegrid", {"axes.grid":False})
-
-    # Set up the matplotlib figure
     f, axes = plt.subplots(3, 1, figsize=(12,12), sharex=False)
 
     sns.histplot(data = df.Fraction_missing,
@@ -82,16 +80,13 @@ def make_df(species_list,group_list,clade_list):
      df = df.sort_values(by=['Fraction_missing'])
      return df
 
-
 def main():
+    # Change paper_pal to number of clades 
     paper_pal = ["#fc986e","#c4c4c4", "#feaea5","#fe8976","#fcb29c",
                  "#a8fbf8","#b1bffb"]
     df = make_df(species_list,group_list,clade_list)
     plot_bar(df, paper_pal)
     plot_subplot(df, paper_pal)
-
-
-
 
 if __name__ == "__main__":
     species_list = sys.argv[1]
