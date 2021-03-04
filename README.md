@@ -65,6 +65,31 @@
    5. Root the tree in different candidate position. 
       - To visualise unrooted trees to help select candidate root positions use ITOL (https://itol.embl.de/) or FigTree (http://tree.bio.ed.ac.uk/software/figtree/)
 
+## Reconcile ALE objects with candidate rooted species trees ##
 
+1. Reconcile ale objects with each candidate rooted species tree.
+   1. Use ALEml_undated to reconcile each ALE object with tge candidate rooted species trees
+      - Use bash command: ALEml_undated <rooted_species_tree> <ale_object>
+      - You perform this command for every ale_object, under the different candidate root positions. 
+      - e.g bash command to run ALE: _ALEml_undated root_on_ecoli.newick 1.ale_
+      - You can also factor in the percentage of the genome that is missing using BUSCO (https://busco.ezlab.org/)
+      - BUSCO provides a completion value e.g 80% - thus, the fraction missing is 0.20. See 'fraction_missing.txt' for e.g.
+      - To add the fraction missing missing parameter just add: _fraction_missing=fraction_missing.txt_ (where 'fraction_missing.txt' holds the respective fraction missing for each sequence e.g. 'Ecoli:0.20'
 
+1. Perform an Approximately unbiased (AU) test (Shimodiara, 2002) to identify likely root position.
+   1. There should be three output files from ALEml_undated: ‘.uml_rec’, ‘.uTs’ and ‘.tree’.
+      - The ‘.uml_rec’ files generated for each candidate root should be in separate directories. 
+      - The naming of each ‘.uml_rec’ file should be consistent for each root. I.e. if you have tested 4 roots, in directories named root_1, root_2, root_3 and root_4, the reconciliation output for the ALE object: 1.ale, should be named 1.ale.uml_rec in each of the four directories. 1.ale.uml_rec will have different values for DTL under each candidate root.
+   2. Use the write_consel_file.py script to construct a table of likelihoods. 
+      - The script requires the list of directories holding the ‘.uml_rec’ for each candidate root position. Save the output of the script into an output file.
+      - For e.g.: _write_consel_file.py root_1/ root_2/ root_3/ root_4/ > likelihoods_table_
+      - The order of the roots is not preserved in the likelihood table. Open the likelihood table in a text editor and note the order of the roots in the likelihood table. 
+   3. Use the following bash command to copy the table into a .mt file: _cp likelihoods_table likelihoods_table.mt _
+   4. Use Consel (http://stat.sys.i.kyoto-u.ac.jp/prog/consel/) to perform an AU test to assess the likelihoods of each root. 
+      - Consel requires three commands to be executed in succession 
+      - 1) consel/bin/makermt likelihoods_table
+      - 2) consel/bin/consel likelihoods_table
+      - 3) consel/bin/catpv likelihoods_table > au_test_out
+   5. Assess the likelihood of each root in the 'au_test_out' file 
+      - The ‘au_test_out.txt’ file includes a table ranking the roots by likelihood, and a number of statistical tests. The AU value column provides a ‘p-value’. If the AU p-value is <0.05 the candidate roots position has been significantly rejected. Roots that have a p-value greater than 0.05 can not be significantly rejected and are therefore likely root positions for the phylogenetic tree. See 'au_test_out.txt' as an example.
 
