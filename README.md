@@ -93,3 +93,16 @@
    5. Assess the likelihood of each root in the 'au_test_out' file 
       - The ‘au_test_out.txt’ file includes a table ranking the roots by likelihood, and a number of statistical tests. The AU value column provides a ‘p-value’. If the AU p-value is <0.05 the candidate roots position has been significantly rejected. Roots that have a p-value greater than 0.05 can not be significantly rejected and are therefore likely root positions for the phylogenetic tree. See 'au_test_out.txt' as an example.
 
+## Post-hoc alaysis ##
+
+1. Assessing the impact of low quality gene families on the likelihood of each root
+   1. Use DTL_ratio_analysis_high_rep.py create plots sequentially removing the worst quality gene families and resumming the likelihoods for each root, based on either the loss/speciation, duplication/speciation or transfer/speciation rates ratio. 
+      - This script requires the following libraries to be installed: sys, glob, os, time, subprocess, pandas, numpy, seaborn and matplotlib
+      - The script requires two text files named "roots_to_test.txt", and "species_list.txt". The roots_to_test.txt file should contain the names of the directories of the rec_files. The species_list.txt file should contain all the species in the dataset and should match the formatting of species tree used in the reconciliation analysis.
+      - The script also requires two command line arguments: The name of the directory of the maximum-likelihood root determined by an AU test and the metric you want to remove gene families by LS, DS or TS.
+      - The script also remakes the plots only using high species representation reconciliation files. The species representation cutoff is currently set to %50 - this can be manually changed by altering the make_high_rep_df() function.
+      - Run the script in the same directory as ‘write_consel_file.py’
+      - Run the script with the following command to assess the LS ratio under Ecoli as the most likely root: python3 DTL_ratio_analysis_high_rep.py Ecoli/ LS
+      - Plots and data produced will be saved to a new directory e.g. ‘LS_ratio_results’. The directory name will change with the metric used. 
+
+
