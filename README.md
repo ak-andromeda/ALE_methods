@@ -59,6 +59,11 @@
       - _super_matrix_2.py_ takes one command line argument, a species list e.g. 'species_list_demo.txt'
       - The species list must match with the Fasta headers of the sequences in the gene families. 
       - This will be the case of all the genomes are formatted as above. 
+   4. Infer an unrooted species tree:
+      - Use IQ-Tree as described above to infer a species tree. 
+      - Alternatively, instead of constructing a super matrix, infer individual gene trees for the single copy gene families and employ a super tree approach such as ASTRAL (https://github.com/smirarab/ASTRAL) 
+   5. Root the tree in different candidate position. 
+      - To visualise unrooted trees to help select candidate root positions use ITOL (https://itol.embl.de/) or FigTree (http://tree.bio.ed.ac.uk/software/figtree/)
 
 
 
