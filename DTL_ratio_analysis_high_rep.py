@@ -42,8 +42,6 @@ the uml_rec files for each candidate root are location
 
 Approximate time for a dataset of 10,000 uml_rec = 10 minutes.
 
-Script written by B.J.Harris 12.02.2020
-
 ############################################################################
     """)
 
