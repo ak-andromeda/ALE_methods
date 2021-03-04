@@ -18,8 +18,8 @@ def usage():
 ############################################################################
 Usage:
 
-This script requires the folling libraries to be installed:
-sys, glob, os, time, subprocess, pandas, numpy, seaborn
+This script requires the following libraries to be installed:
+sys, glob, os, time, subprocess, pandas, numpy, seaborn, biopython
 and matplotlib.
 
 The script requires two text files named "roots_to_test.txt", and
@@ -31,14 +31,14 @@ in the reconciliation analysis.
 
 The script also requires two command line arguments:
 
-1) The maximum-likelihood determined by an AU test
+1) The maximum-likelihood root determined by an AU test
 2) The metric you want to test: LS, DS or TS.
 
 High species representation is currently set to %50 - this can be manually
-chaged by altering the make_high_rep_df function.
+changed by altering the make_high_rep_df function.
 
-Run the script in the directory where all the folders for each roots .uml_rec
-files are located.
+Run the script in the directory where all the directories containing 
+the uml_rec files for each candidate root are location
 
 Approximate time for a dataset of 10,000 uml_rec = 10 minutes.
 
