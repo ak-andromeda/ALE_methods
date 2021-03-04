@@ -20,7 +20,9 @@ Usage:
 
 This script requires the following libraries to be installed:
 sys, glob, os, time, subprocess, pandas, numpy, seaborn, biopython
-and matplotlib.
+and matplotlib. Version >=0.9 for seaborn is required for chart palettes. 
+If you have an error regarding the use of the 'flare' palette, remove this 
+argument from the plot_results() function. 
 
 The script requires two text files named "roots_to_test.txt", and
 "species_list.txt". The roots_to_test.txt file should
