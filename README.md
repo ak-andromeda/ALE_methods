@@ -87,9 +87,9 @@
    3. Use the following bash command to copy the table into a .mt file: _cp likelihoods_table likelihoods_table.mt _
    4. Use Consel (http://stat.sys.i.kyoto-u.ac.jp/prog/consel/) to perform an AU test to assess the likelihoods of each root. 
       - Consel requires three commands to be executed in succession 
-      - 1) consel/bin/makermt likelihoods_table
-      - 2) consel/bin/consel likelihoods_table
-      - 3) consel/bin/catpv likelihoods_table > au_test_out
+      - _consel/bin/makermt likelihoods_table_
+      - _consel/bin/consel likelihoods_table_
+      - _consel/bin/catpv likelihoods_table > au_test_out_
    5. Assess the likelihood of each root in the 'au_test_out' file 
       - The ‘au_test_out.txt’ file includes a table ranking the roots by likelihood, and a number of statistical tests. The AU value column provides a ‘p-value’. If the AU p-value is <0.05 the candidate roots position has been significantly rejected. Roots that have a p-value greater than 0.05 can not be significantly rejected and are therefore likely root positions for the phylogenetic tree. See 'au_test_out.txt' as an example.
 
