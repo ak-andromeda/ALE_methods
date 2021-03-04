@@ -102,7 +102,7 @@
       - The script also requires two command line arguments: The name of the directory of the maximum-likelihood root determined by an AU test and the metric you want to remove gene families by LS, DS or TS.
       - The script also remakes the plots only using high species representation reconciliation files. The species representation cutoff is currently set to %50 - this can be manually changed by altering the make_high_rep_df() function.
       - Run the script in the same directory as ‘write_consel_file.py’
-      - Run the script with the following command to assess the LS ratio under Ecoli as the most likely root: python3 DTL_ratio_analysis_high_rep.py Ecoli/ LS
+      - Run the script with the following command to assess the LS ratio under Ecoli as the most likely root: _python3 DTL_ratio_analysis_high_rep.py Ecoli/ LS_
       - Plots and data produced will be saved to a new directory e.g. ‘LS_ratio_results’. The directory name will change with the metric used. 
 
 
