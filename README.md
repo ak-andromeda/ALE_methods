@@ -2,12 +2,13 @@
 
 * Python util scripts to facilitate analysis of duplication, transfer and loss with Amalgamated Likelihood Estimation (ALE). 
 
-## Making ALE objects ##
+## Make ALE objects ##
 1. Genomes are downloaded from repositories in FASTA format.
    1. Genome are reformatted to be compatible with ALE 
    2. Same genomes in this fashion: “ecoli.fa” for genus only or “Arabidopisis.thaliana.fa” for genus and species.
    3. Use _rf_genome_for_mcl.py_ to reformat genomes for ALE.
       - Code requires one command line argument: a species list in the form of a text file e.g. “species_list_demo.txt"
+      - Genome names must match species list. e.g. if species list includes 'Ecoli', genome in the directory must be named 'Ecoli.fa'. 
 
 1. Construct pairwise alignments
    1. Perform all vs all Diamond BLAST (https://github.com/bbuchfink/diamond)
@@ -37,7 +38,28 @@
 
 1. Infer bootstrap distribution of trees for each gene family. This can be done with IQ-Tree (http://www.iqtree.org/).
    1. For protein sequences, the LG in combination with the C10:C60* provides a parameter rich model to infer the bootstrap distribution of trees. Please see IQ-Tree documentation for more help.
-      - bash command to run IQ-Tree: i_qtree -s <gene_family_ID.aln> -m MFP -mset LG+C20,LG+C30,LG+C40 -madd -bb 1000 -wbtl 
+      - bash command to run IQ-Tree: _iqtree -s <gene_family_ID.aln> -m MFP -mset LG+C20,LG+C30,LG+C40 -madd -bb 1000 -wbtl_
       - Additional paramaters can be added such as 'LG+C20+g+f' to model for site rate heterogeneity.  
+1. Convert bootstrap tree distributions to ALE object using ALEobserve.
+   1. To create ALE object use: _ALE_observe < ufboot file >_
+   2. To speed up the process use GNU parallel: _ls *.ufboot | parallel ALE_observe {}.ale_
+
+## Infer unrooted species tree ##
+
+1. Use OrthoFinder (https://github.com/davidemms/OrthoFinder) to infer single copy orthologs.
+   1. See OrthoFinder documentation for instructions. 
+   2. If no single copy orthologs were identified (this is often the case for multicellular organisms). Use _prem3.py_ to generate single copy gene families from the orthologous sequence files produced by Orthofinder. 
+      - _prem3.py_ takes two command line arguments: 1) A species list ('species_list_demo.txt'), 2) A percentage cutoff for species representation remaining of each gene family. 
+      - Adjust the percentage cutoff to determine the number of single copy families returned. Aim to increase the value as close to '100' as possible, whilst retaining a sufficient amount of data to construct a sequence alignment. 
+
+1. Construct a super matrix alignment, or employ a super tree approach. 
+   1. Align single copy gene families with MAFFT (As shown in the Make ALE Objects section). 
+   2. Trim gene families with BMGE to remove poorly aligned sites. 
+   3. Use _super_matrix_2.py_ to construct a super matrix alignment.
+      - _super_matrix_2.py_ takes one command line argument, a species list e.g. 'species_list_demo.txt'
+      - The species list must match with the Fasta headers of the sequences in the gene families. 
+      - This will be the case of all the genomes are formatted as above. 
+
+
 
 
