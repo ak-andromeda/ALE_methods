@@ -32,7 +32,7 @@ in the reconciliation analysis.
 The script also requires two command line arguments:
 
 1) The maximum-likelihood tree determined by an AU test
-2) The metric you want to test: LS, DS or TS.
+2) The metric you want to test: D, T, L, S, LS, DS or TS.
 
 High species representation is currently set to %50 - this can be manually
 chaged by altering the make_high_rep_df function.
@@ -43,7 +43,7 @@ files are located.
 Approximate time for a dataset of 10,000 uml_rec, and 12 roots = 10 minutes.
 Time will vary based on the size of the gene families and number of roots.
 
-Script written by B.J.Harris 12.02.2020
+Script written: 12.02.2020
 
 ############################################################################
     """)
