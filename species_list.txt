@@ -1,6 +1,0 @@
-archaeoglobus
-Bacillus
-Ecoli
-Methanocaldococcus
-Streptomyces
-Sulfolobus
