@@ -29,7 +29,7 @@
       - The script requires two command line arguments:  1: the output from the MCL ('out.seq.mci.I14'), 2: The dataset used to in the all vs all blast ('ALE_demo_dataset.fasta').
 
 1. Align and trim gene families
-   1. Use_ find_viable_gene_families.py_ to remove families with less than four sequences present. 
+   1. Use _find_viable_gene_families.py_ to remove families with less than four sequences present. 
       - Four is the minimum number of sequences in which MAFFT can align - removing these files early helps audit the process.
    2. Use MAFFT (https://mafft.cbrc.jp/alignment/software/) to align the gene families. 
       - This can be done with GNU parallel (https://www.gnu.org/software/parallel/ to speed up the process).
