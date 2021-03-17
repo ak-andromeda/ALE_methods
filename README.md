@@ -20,9 +20,9 @@
 1. Cluster gene families using MCL (https://micans.org/mcl/).
    1. Extract the results required from AvA_demo.txt using the bash command: _cut -f 1,2,11 AvA_demo > seq.abc_
    2. Use MCL to first load the blast results, with the bash command: _mcxload -abc seq.abc --stream-mirror --stream-neg-log10 -stream-tf 'ceil(2002)' -o seq.mci -write-tab seq.tab_
-   3. Use MCL to cluster the blast results with the folliwng bash command: _mcl seq.mci -I 1.4 -use-tab seq.tab._
+   3. Use MCL to cluster the blast results with the following bash command: _mcl seq.mci -I 1.4 -use-tab seq.tab._
       - Ensure MCL is added to path.
-      - Step 3. can be repeated using different inlfation values (-I parameter) to adjust gene family cluster sizes.
+      - Step 3. can be repeated using different infltion values (-I parameter) to adjust gene family cluster sizes.
       - Output is in a single text file: 'out.seq.mci.I14'
    4. Convert MCL output file to individual FASTA files.
       - _Use make_gene_families_mcl.py_ to convert the MCL output into individual FASTA files.
