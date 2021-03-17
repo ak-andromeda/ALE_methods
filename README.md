@@ -5,7 +5,7 @@
 ## Make ALE objects ##
 1. Genomes are downloaded from repositories in FASTA format.
    1. Genome are reformatted to be compatible with ALE 
-   2. Same genomes in this fashion: “Sulfolobus.fa” for genus only or “Arabidopisis.thaliana.fa” for genus and species.
+   2. Name genomes in this fashion: “Sulfolobus.fa” for genus only or “Arabidopisis.thaliana.fa” for genus and species.
    3. Use _rf_genome_for_mcl.py_ to reformat genomes for ALE.
       - Code requires one command line argument: a species list in the form of a text file e.g. “species_list_demo.txt"
       - Genome names must match species list. e.g. if species list includes 'Ecoli', genome in the directory must be named 'Ecoli.fa'. 
