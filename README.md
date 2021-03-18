@@ -41,8 +41,8 @@
       - bash command to run IQ-Tree: _iqtree -s <gene_family_ID.aln> -m MFP -mset LG+C20,LG+C30,LG+C40 -madd -bb 1000 -wbtl_
       - Additional paramaters can be added such as 'LG+C20+g+f' to model for site rate heterogeneity.  
 1. Convert bootstrap tree distributions to ALE object using ALEobserve.
-   1. To create ALE object use: _ALE_observe < ufboot file >_
-   2. To speed up the process use GNU parallel: _ls *.ufboot | parallel ALE_observe {}.ale_
+   1. To create ALE object use: _ALEobserve < ufboot file >_
+   2. To speed up the process use GNU parallel: _ls *.ufboot | parallel ALEobserve {}.ale_
 
 ## Infer unrooted species tree ##
 
