@@ -80,10 +80,11 @@
    1. There should be three output files from ALEml_undated: ‘.uml_rec’, ‘.uTs’ and ‘.tree’.
       - The ‘.uml_rec’ files generated for each candidate root should be in separate directories. 
       - The naming of each ‘.uml_rec’ file should be consistent for each root. I.e. if you have tested 4 roots, in directories named root_1, root_2, root_3 and root_4, the reconciliation output for the ALE object: 1.ale, should be named 1.ale.uml_rec in each of the four directories. 1.ale.uml_rec will have different values for DTL under each candidate root.
-   2. Use the write_consel_file.py script to construct a table of likelihoods. 
+   2. Use the write_consel_file_p3.py script to construct a table of likelihoods. 
       - The script requires the list of directories holding the ‘.uml_rec’ for each candidate root position. Save the output of the script into an output file.
-      - For e.g.: _write_consel_file.py root_1/ root_2/ root_3/ root_4/ > likelihoods_table_
+      - For e.g.: _write_consel_file_p3.py root_1/ root_2/ root_3/ root_4/ > likelihoods_table_
       - The order of the roots is not preserved in the likelihood table. Open the likelihood table in a text editor and note the order of the roots in the likelihood table. 
+      - A python2 version is also available _write_conse_file.py_
    3. Use the following bash command to copy the table into a .mt file: _cp likelihoods_table likelihoods_table.mt _
    4. Use Consel (http://stat.sys.i.kyoto-u.ac.jp/prog/consel/) to perform an AU test to assess the likelihoods of each root. 
       - Consel requires three commands to be executed in succession 
