@@ -106,5 +106,12 @@
       - Run the script with the following command to assess the LS ratio under Ecoli as the most likely root: _python3 DTL_ratio_analysis_ML_diff.py Ecoli LS_
       - Plots and data produced will be saved to a new directory e.g. ‘LS_ratio_results’. The directory name will change with the metric used. 
       - Plots will be saved as both png and svg figures. 
+1.  Gene content evolution on the most likely rooted species tree
+   Once the most likely root has been identified, this technique allows users to quantify the relative contributions of duplication, transfer, loss and  origination in the gene content evolution.  These predicted values can be calculated for every branch of the species tree, enabling insights into how gene content evolves over time. Here we provide a script that calculates the predicted total number of duplication, transfer, loss and origination events for all branches of the species tree and estimates the number of genes present in the ancestral genome at each internal tree node.
+
+
+
+
+
 
 
