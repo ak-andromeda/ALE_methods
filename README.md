@@ -106,10 +106,20 @@
       - Run the script with the following command to assess the LS ratio under Ecoli as the most likely root: _python3 DTL_ratio_analysis_ML_diff.py Ecoli LS_
       - Plots and data produced will be saved to a new directory e.g. ‘LS_ratio_results’. The directory name will change with the metric used. 
       - Plots will be saved as both png and svg figures. 
-1.  Gene content evolution on the most likely rooted species tree
-   Once the most likely root has been identified, this technique allows users to quantify the relative contributions of duplication, transfer, loss and  origination in the gene content evolution.  These predicted values can be calculated for every branch of the species tree, enabling insights into how gene content evolves over time. Here we provide a script that calculates the predicted total number of duplication, transfer, loss and origination events for all branches of the species tree and estimates the number of genes present in the ancestral genome at each internal tree node.
 
-
+1. Gene content evolution on the most likely rooted species tree
+   1. Once the most likely root has been identified, this technique allows users to quantify the relative contributions of duplication, transfer, loss and  origination in the gene content evolution.  These predicted values can be calculated for every branch of the species tree, enabling insights into how gene content evolves over time. Here we provide a script that calculates the predicted total number of duplication, transfer, loss and origination events for all branches of the species tree and estimates the number of genes present in the ancestral genome at each internal tree node.
+       - Use the script _branchwise_number_of_events.py_ > dtlo.tsv
+       - The script requires no command line arguments
+       - Run the script in the directory of the root containing the uml_rec you want to analyze.
+       - Call the script with _python3 branchwise_number_of_events.py > dtlo.tsv_
+       - The output will be a tab separated file. 
+ 
+1. Reconstructing ancestral nodes
+   1. The ALE output also provides estimates of the gene families present at each node. Therefore we can model the presence and absence of gene families at internal nodes - reconstructing ancestral genomes. We provide the following script to reconstruct all the genes present at internal nodes. The command line argument is the copy number cutoff - to make the ancestral reconstruction more stringent increase the copy number. 
+        - Use the script _Ancestral_reconstruction_copy_number_.py 0.5_ 
+        - This script creates separate csv files for each node. 
+        - In each of the csv files will be a list of the gene families at that node. 
 
 
 
