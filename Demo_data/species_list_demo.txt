@@ -1,6 +1,6 @@
-archaeoglobus
+Archaeoglobus
 Bacillus
-Ecoli
+Escherichia
 Methanocaldococcus
 Streptomyces
 Sulfolobus

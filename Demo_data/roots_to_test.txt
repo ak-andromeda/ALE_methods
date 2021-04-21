@@ -3,7 +3,7 @@ bacillus_first
 between_bac_arc
 between_strep_bac
 between_suf_arc
-ecoli_first
+escherichia_first
 methanocaldococcus_first
 streptomyces_first
 sufolobus_first
