@@ -12,7 +12,7 @@
 
 1. Construct pairwise alignments
    1. Perform all vs all Diamond BLAST (https://github.com/bbuchfink/diamond)
-   2. Merge all the genomes into a single fasta file with the following bash command: _cat *.fa > ALE_demo_dataset.fasta_
+   2. Merge all the genomes into a single fasta file with the following bash command: _cat *_rf.fa > ALE_demo_dataset.fasta_
    3. Make a diamond blast database. Bash command: _diamond makedb --in ALE_demo_dataset.fasta -d nr_
    4. Blast ALE_demo_dataset.fasta against diamond blast database with the bash command (Adjust parameters to suit data and machine): _diamond blastp -d nr -q ALE_demo_dataset.fasta -o AvA_demo.txt -f 6 -p 40 –evalue 0.0001 –log_
       - Output is in AvA_demo.txt
@@ -33,6 +33,7 @@
       - Four is the minimum number of sequences in which MAFFT can align - removing these files early helps audit the process.
    2. Use MAFFT (https://mafft.cbrc.jp/alignment/software/) to align the gene families. 
       - This can be done with GNU parallel (https://www.gnu.org/software/parallel/ to speed up the process).
+      - First change into the directory with the viable sequences _cd four_plus_seq/_
       - The following code can be used to align in parallel: _ls *.fasta | parallel mafft –auto {} “>” {}.aln._
    3. Use BMGE (ftp://ftp.pasteur.fr/pub/GenSoft/projects/BMGE/) to trim poorly aligned sites. 
 
