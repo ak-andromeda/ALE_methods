@@ -120,7 +120,9 @@
    1. The ALE output also provides estimates of the gene families present at each node. Therefore we can model the presence and absence of gene families at internal nodes - reconstructing ancestral genomes. We provide the following script to reconstruct all the genes present at internal nodes. The command line argument is the copy number cutoff - to make the ancestral reconstruction more stringent increase the copy number. 
         - Use the script _Ancestral_reconstruction_copy_number_.py 0.5_ 
         - This script creates separate csv files for each node. 
-        - In each of the csv files will be a list of the gene families at that node. 
+        - In each of the csv files will be a list of the gene families at that node.
+        - In the script you need to specify the node ranges. ALE assigns each node a number - if you have 30 internal nodes, alter the node range to be 1,30.
+        - This script works with the output from ALEml.
 
 
 
