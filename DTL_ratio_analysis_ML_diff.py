@@ -23,9 +23,10 @@ sys, glob, os, time, subprocess, pandas, numpy, seaborn
 and matplotlib.
 
 The script requires two text files named "roots_to_test.txt", and
-"species_list.txt". The roots_to_test.txt file should
+"species_list_demo.txt". Manually edit the the scrip if you woudld like
+to change the name to a different list. The roots_to_test.txt file should
 contain the names of the directories of the rec_files.
-The species_list.txt file should contain all the species in the
+The species_list_demo.txt file should contain all the species in the
 dataset and should match the formatting of species tree used
 in the reconciliation analysis.
 
@@ -85,7 +86,7 @@ def get_species_rep(ML_root):
     """ Function to calculate species representation """
 
     print("Species representation for each uml_rec file being calculated")
-    file = open("species_list.txt", "r")
+    file = open("species_list_demo.txt", "r")
     species_list = []
     for i in file:
         species = i.strip()
