@@ -314,7 +314,7 @@ def make_high_rep_df(df,rankby):
     timestr = time.strftime("%d%m%y")
     file_name = rank_by + "_" + timestr + "_high_rep_ranked.csv"
 
-    df = df[df["species_representation"] >= 75]
+    df = df[df["species_representation"] >= 50]
     df.to_csv(file_name)
 
     print("\nResults from gene families with >=50% species representation" + \
