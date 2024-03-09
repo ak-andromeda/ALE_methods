@@ -44,6 +44,11 @@ files are located.
 Approximate time for a dataset of 10,000 uml_rec, and 12 roots = 10 minutes.
 Time will vary based on the size of the gene families and number of roots.
 
+Dependencies of this script:
+pandas==2.1.1
+seaborn==0.13.0
+matplotlib==3.7.3
+numpy==1.24.4
 ############################################################################
     """)
 
@@ -291,7 +296,7 @@ def run_DTL(count,ML_root,rank_by,species_rep):
                         "species_representation": species_present,
                         "log_likelihood":log_likelihood,
                         rank_by:rank}
-                df = df.append(data, True)
+                df = pd.concat([df, pd.DataFrame([data])]).reset_index(drop=True)
                 rec_file.close()
 
     return(df)
@@ -364,7 +369,7 @@ def summed_likelihood(rank_by,count):
                     "Root":root,
                     "summed_likelihood":summed_likelihood,
                     "ML_diff":ML_diff}
-            df_totals = df_totals.append(data, True)
+            df_totals = pd.concat([df_totals, pd.DataFrame([data])], axis=0).reset_index(drop=True)
 
             total_rec = count*number_of_roots
             pct_progress =  round((progress/total_rec)*100,2)
@@ -423,7 +428,7 @@ def summed_likelihood_high_rep(rank_by,species_representation,count):
                     "Root":root,
                     "summed_likelihood":summed_likelihood,
                     "ML_diff":ML_diff}
-            df_totals = df_totals.append(data, True)
+            df_totals = pd.concat([df_totals, pd.DataFrame([data])], axis=0).reset_index(drop=True)
 
             total_rec = count*number_of_roots
             pct_progress =  round((progress/total_rec)*100,2)
@@ -546,3 +551,5 @@ if __name__ == "__main__":
     ML_root = sys.argv[1]
     rank_by = sys.argv[2]
     main()
+
+
